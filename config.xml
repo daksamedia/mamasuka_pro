@@ -31,7 +31,7 @@
 	<preference name="StatusBarStyle" value="lightcontent" />
 	<preference name="android-build-tool" value="gradle" />
 	<preference name="android-minSdkVersion" value="15" />
-    <preference name="android-targetSdkVersion" value="20"/>
+    <preference name="android-targetSdkVersion" value="23"/>
 	<!-- android: API level 15 is Android 4.0.3, ICE_CREAM_SANDWICH_MR1. MIN SDK version supported on the target device. MAX version is blank by default. -->
 	<!-- Define a specific version of PhoneGap to build into your app. -->
 	<preference name="phonegap-version" value="cli-6.5.0" />
