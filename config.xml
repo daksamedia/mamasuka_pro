@@ -116,9 +116,9 @@
       <resource-file src="GoogleService-Info.plist" />
     </platform>-->
     <platform name="ios">
-		<plugin name="cordova-plugin-camera" source="npm" spec="2.4.1">
-			<variable name="CAMERA_USAGE_DESCRIPTION" value="Taking photos." />
-			<variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Accessing the photo library." />   	
+		<plugin name="cordova-plugin-camera">
+			<param  name="CAMERA_USAGE_DESCRIPTION" value="Taking photos." />
+			<param  name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="Accessing the photo library." />   	
 		</plugin>
         <icon   src="res/icon/ios/icon.png"                         platform="ios" width="57"   height="57" />
         <icon   src="res/icon/ios/icon@2x.png"                      platform="ios" width="114"  height="114" />
