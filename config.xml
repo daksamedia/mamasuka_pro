@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "com.haagendazs.id.app"
-        version   = "1.1.9">
+        version   = "1.1.4">
 
     <name>Häagen Dazs</name>
 
@@ -31,21 +31,18 @@
 	<preference name="StatusBarStyle" value="lightcontent" />
 	<preference name="android-build-tool" value="gradle" />
 	<preference name="android-minSdkVersion" value="15" />
-    <preference name="android-targetSdkVersion" value="23"/>
+    <preference name="android-targetSdkVersion" value="20"/>
 	<!-- android: API level 15 is Android 4.0.3, ICE_CREAM_SANDWICH_MR1. MIN SDK version supported on the target device. MAX version is blank by default. -->
 	<!-- Define a specific version of PhoneGap to build into your app. -->
-	<preference name='phonegap-version' value='cli-7.0.1' />
+	<preference name="phonegap-version" value="cli-6.5.0" />
     <preference name="windows-appx-target" value="8.1-phone" />
     <preference name="WindowsToastCapable" value="true" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
-	
+
     <!-- Plugins -->
     <!-- Core plugins -->
     <plugin name="cordova-plugin-battery-status" spec="1.2.4" />
-    <plugin name="cordova-plugin-camera" spec="2.4.1">
-	   <param name="CAMERA_USAGE_DESCRIPTION" value="We are using the Camera for something..." />
-	   <param name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="We are using the Photo Library for something..." />
-	</plugin>
+	<plugin name="cordova-plugin-camera" spec="2.4.1" />
 	<plugin name="cordova-plugin-console" spec="1.0.7" />
 	<plugin name="cordova-plugin-contacts" spec="2.3.1" />
 	<plugin name="cordova-plugin-device" spec="1.1.6" />
@@ -119,14 +116,6 @@
       <resource-file src="GoogleService-Info.plist" />
     </platform>-->
     <platform name="ios">
-		<allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-        <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
-            <string>We are using the Photo Library for something...</string>
-        </edit-config>
-        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="overwrite"> 
-			<string>Used to attach photos to your projects</string> 
-		</edit-config>
         <icon   src="res/icon/ios/icon.png"                         platform="ios" width="57"   height="57" />
         <icon   src="res/icon/ios/icon@2x.png"                      platform="ios" width="114"  height="114" />
         <icon   src="res/icon/ios/icon-40.png"                      platform="ios" width="40"   height="40" />
@@ -216,7 +205,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-	<gap:config-file platform="ios" parent="NSCameraUsageDescription" overwrite="true">
-			<string>We are using the Camera for something..</string>
-	</gap:config-file>
+
 </widget>
