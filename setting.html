@@ -601,7 +601,7 @@ $(document).ready(function(){
 	});
 	
 	
-		if(localStorage.hd_lang==="ENG" || localStorage.hd_lang != undefined || localStorage.hd_lang != ""){
+		if(localStorage.hd_lang==="ENG" || localStorage.hd_lang == undefined || localStorage.hd_lang == ""){
 			$(".idn img").css("filter","grayscale(100%)");
 			$(".idn img").css("-webkit-filter","grayscale(100%)");
 			$(".eng img").css("filter","none");
