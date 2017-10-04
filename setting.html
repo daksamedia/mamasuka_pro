@@ -353,7 +353,7 @@ $(document).ready(function(){
 			$(".tab2").addClass('slick-active');
 	}
 
-	localStorage.hd_lang;
+	//localStorage.hd_lang;
 	console.log(localStorage.hd_lang);
 	$(".header").show();
 	var sess_key = localStorage.hd_session_key;
@@ -601,7 +601,7 @@ $(document).ready(function(){
 	});
 	
 	
-		if(localStorage.hd_lang==="ENG" || localStorage.hd_lang != undefined || localStorage.hd_lang != ""){
+		if(localStorage.hd_lang==="ENG" || localStorage.hd_lang == undefined || localStorage.hd_lang == ""){
 			$(".idn img").css("filter","grayscale(100%)");
 			$(".idn img").css("-webkit-filter","grayscale(100%)");
 			$(".eng img").css("filter","none");
