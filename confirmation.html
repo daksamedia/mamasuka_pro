@@ -357,7 +357,12 @@ $(document).ready(function() {
 	
 	$.getJSON(getorder, function(order){
 		for (var i = 0, buset = order.payload.length; i < buset; i++) {
-			$("select.hd_order").append('<option value="'+ order.payload[i].order_id +'">'+ order.payload[i].order_id +' - <strong> Rp. '+ addCommas(order.payload[i].total_value) +'</strong></option>');
+			if(order.payload[i].paid_amount > 0){
+				$("select.hd_order").append('<option value="'+ order.payload[i].order_id +'">'+ order.payload[i].order_id +' - <strong> Rp. '+ addCommas((order.payload[i].total_value - order.payload[i].paid_amount)) +'</strong></option>');
+			}else{
+				$("select.hd_order").append('<option value="'+ order.payload[i].order_id +'">'+ order.payload[i].order_id +' - <strong> Rp. '+ addCommas(order.payload[i].total_value) +'</strong></option>');
+			}
+			
 		}
 	});
 
