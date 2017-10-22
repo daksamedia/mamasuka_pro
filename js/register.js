@@ -80,6 +80,7 @@ $('document').ready(function()
 				data : data,
 				beforeSend: function()
 				{	
+					$("input[type='button']").fadeOut();
 					$(".loads").fadeIn();
 					$(".regisform").fadeOut();
 					document.addEventListener("backbutton", function (e) {
@@ -92,17 +93,22 @@ $('document').ready(function()
 						   		var respon = jQuery.parseJSON(response);		
 						   			
 								if(respon.is_error===false){
-									$(".loads").html('You have been successfully registered...');
-									location.reload();
-																
+									$(".loads").html('You have been successfully registered...<br />Please check up your email to activation.');
+									//location.reload();
+									setTimeout(function () {
+
+										location.reload();
+
+									},6000)							
 								}else{
-									
+									$("input[type='button']").fadeIn();
+									$(".loads").fadeOut();
 									if(respon.payload.validation_errors.full_name!=undefined){
 										$(".loads").html('<div class="alert alert-danger"><span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+ respon.payload.validation_errors.full_name +'</div>');
 									}else{
 										$(".loads").html('<div class="alert alert-danger"><span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+ respon.payload.validation_errors.email +'</div>');
 									}
-									
+									//$("input[type='button']").fadeOut();
 									setTimeout(function () {
 
 										$(".alert-danger").fadeOut();
