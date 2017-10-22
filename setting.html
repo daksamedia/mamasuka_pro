@@ -353,7 +353,7 @@ $(document).ready(function(){
 			$(".tab2").addClass('slick-active');
 	}
 
-	//localStorage.hd_lang;
+	localStorage.hd_lang;
 	console.log(localStorage.hd_lang);
 	$(".header").show();
 	var sess_key = localStorage.hd_session_key;
@@ -607,6 +607,7 @@ $(document).ready(function(){
 			$(".eng img").css("filter","none");
 			$(".eng img").css("-webkit-filter","none");
 			$(".chgbhs strong").html("English");
+			localStorage.hd_lang="ENG"
 		}else{
 			$(".eng img").css("filter","grayscale(100%)");
 			$(".eng img").css("-webkit-filter","grayscale(100%)");

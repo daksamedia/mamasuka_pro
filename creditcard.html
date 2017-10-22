@@ -467,7 +467,17 @@ $(document).ready(function() {
 
 
 	/* ACTION FOR USE VOUCHER FUNCTION */
+	var payByVoucherInProgress = false;
 	function usevoucher(){
+		// Just reject when this function in progress
+		if(payByVoucherInProgress){
+			return;
+		}
+		$(".usevoucher").attr("disabled","true");
+		$(".usevoucher").css("opacity","0.3");
+		// Set In Progress
+		payByVoucherInProgress = true;
+		
 		var coupon_code = $('.voucherinp').val();
 
 		var param = {
@@ -511,9 +521,9 @@ $(document).ready(function() {
 			   	}else{
 			   		$(this).addClass("col-xs-12");
 					$(this).removeClass("col-xs-6");
-					$("#coupon_success .modal-footer .apply_coupon").remove();
-					
-
+					$("#coupon_success .modal-footer .apply_coupon").remove();					
+					$(".usevoucher").attr("disabled",false);
+					$(".usevoucher").css("opacity","1");
 			   		$("#error").modal("show");
 			   		$("#coupon_success").modal("hide");
 			   		if(localStorage.hd_lang=="IDN"){
@@ -528,6 +538,9 @@ $(document).ready(function() {
 			   			$("#error .modal-body p").html("Error! "+ response.status_msg);
 			   		}			   		
 			   	}
+				
+				// Kembalikan flag in progress
+				payByVoucherInProgress = false;
 	        })
 
 		

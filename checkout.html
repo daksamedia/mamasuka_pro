@@ -944,6 +944,9 @@ $(document).ready(function() {
 
 	
 	 $(".continue").on('click', function() {
+		$(".btnfix .continue").css("opacity","0.3");
+	 	$(".btnfix .continue").attr("disabled",true);
+		$(".loading").fadeIn("show");
 		if(localStorage.hd_areaprice ==="java"){
 	 		var region_id = "1"
 	 	}else{
@@ -1003,7 +1006,10 @@ $(document).ready(function() {
 				   		localStorage.hd_order_total="";
 				   		localStorage.hd_payment="";*/
 				   	}else{
-				   		$("#error").modal("show");
+				   		$(".btnfix .continue").css("opacity","1");
+						$(".btnfix .continue").attr("disabled",false);
+						$(".loading").fadeOut();
+						$("#error").modal("show");
 				   		//alert("order tidak terkirim");
 				   		if(localStorage.hd_lang==="IDN"){
 				   			$("#error .modal-body p").html('Pesanan tidak terkirim!');	
@@ -1053,6 +1059,9 @@ $(document).ready(function() {
 				   		localStorage.hd_order_total="";
 				   		localStorage.hd_payment="";*/
 				   	}else{
+						$(".btnfix .continue").css("opacity","1");
+						$(".btnfix .continue").attr("disabled",false);
+						$(".loading").fadeOut();
 				   		$("#error").modal("show");
 				   		if(localStorage.hd_lang=="IDN"){
 				   			$("#error .modal-body p").html('Pesanan tidak terkirim!');	
@@ -1109,6 +1118,9 @@ $(document).ready(function() {
 				   		localStorage.hd_order_total="";
 				   		localStorage.hd_payment="";*/
 				   	}else{
+						$(".btnfix .continue").css("opacity","1");
+						$(".btnfix .continue").attr("disabled",false);
+						$(".loading").fadeOut();
 				   		$("#error").modal("show");
 				   		if(localStorage.hd_lang=="IDN"){
 				   			$("#error .modal-body p").html('Pesanan tidak terkirim!');	

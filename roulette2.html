@@ -231,7 +231,8 @@ $(document).ready(function() {
 				duration: 10000 // The amount of milliseconds the roulette to spin
 			});
 		$('.price').text('You have: ' + spinumb +' spin');
-		var clickHandler = function() {	  
+		var clickHandler = function() {	
+		  
 		  $('.spinner').off('click');
 		  $('.spinner span').hide();
 		  $.post(urlt)
