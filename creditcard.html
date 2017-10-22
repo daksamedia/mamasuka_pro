@@ -473,8 +473,7 @@ $(document).ready(function() {
 		if(payByVoucherInProgress){
 			return;
 		}
-		$(".usevoucher").attr("disabled","true");
-		$(".usevoucher").css("opacity","0.3");
+		
 		// Set In Progress
 		payByVoucherInProgress = true;
 		
@@ -573,7 +572,9 @@ $(document).ready(function() {
 	function validatevoucher(){
 		var coupon_code = $(".vouchersec input").val();
 		//var order_id = order_id;
-
+		$(".usevoucher").attr("disabled","true");
+		$(".usevoucher").css("opacity","0.3");
+		
 		var param = {
 			coupon_code : coupon_code,
 			order_id : order_id
@@ -599,7 +600,7 @@ $(document).ready(function() {
 		        			$("#coupon_success .modal-body p").html("Coupon will discount <strong>Rp. "+ addCommas(nilai_voucher) +"</strong> from total price. Click 'Use Coupon' to apply coupon.");
 		        			$("#coupon_success .modal-footer").append("<button class='col-xs-6 apply_coupon'>Use Coupon</button>");
 		        		}
-
+						
 		        		$("#coupon_success .modal-footer .closebtn").click(function(){
 		        			$(this).addClass("col-xs-12");
 		        			$(this).removeClass("col-xs-6");
@@ -607,6 +608,8 @@ $(document).ready(function() {
 		        		});
 		        		$(".apply_coupon").click(usevoucher);
 		        	}else{
+						$(".usevoucher").attr("disabled",false);
+						$(".usevoucher").css("opacity","1");
 		        		$("#error").modal("show");
 		        		if(localStorage.hd_lang=="IDN"){
 		        			$("#error .modal-title").html("Kupon Salah");
@@ -620,6 +623,8 @@ $(document).ready(function() {
 		        })
 		}else{
 			$("#error").modal("show");
+			$(".usevoucher").attr("disabled",false);
+			$(".usevoucher").css("opacity","1");
     		if(localStorage.hd_lang=="IDN"){
     			$("#error .modal-title").html("Kupon Kosong");
     			$("#error .modal-body p").html("Kolom isian kosong.");
@@ -685,7 +690,7 @@ $(document).ready(function() {
 			            '<div class="col-xs-2" style="background:#e4e4e4; text-align: center; padding: 5px;"> - </div>'+
 			            '<div class="col-xs-4 priceperitem" style="background:#E3B75B; text-align: center; padding: 5px;">Rp. '+ addCommas(pesanan.payload[0].tax) +'</div>'+
 			         '</div>'
-				)
+			)
 
 			if(localStorage.hd_lang=="IDN"){
 				$(".label-tax").html("PPN 10%");
@@ -867,7 +872,12 @@ $(document).ready(function() {
 		$("#sprintasia .modal-body iframe").attr("src",url);
 	}
 	
-	
+	$("#coupon_success .modal-footer .closebtn").click(function(){
+		
+		$(".usevoucher").attr("disabled",false);
+		$(".usevoucher").css("opacity","1");
+		
+	})
 	
 	$("#sprintasia .modal-footer button").click(function(){
 		$("#sprintasia .modal-body iframe").attr("src","");
