@@ -740,6 +740,10 @@ nav.nav {
 /* NAV MENU END */
 
 /* MODAL */
+.modal{
+	display:none;
+}
+
 .modal-dialog {
 	margin-top: 38% !important;
 }
