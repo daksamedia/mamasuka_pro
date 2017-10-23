@@ -353,7 +353,7 @@ $(document).ready(function(){
 			$(".tab2").addClass('slick-active');
 	}
 
-	//localStorage.hd_lang;
+	localStorage.hd_lang;
 	console.log(localStorage.hd_lang);
 	$(".header").show();
 	var sess_key = localStorage.hd_session_key;
@@ -542,6 +542,8 @@ $(document).ready(function(){
 	
 	//SAVE SETTING
 	$(".savenow button").click(function(){
+		$(".savenow button").attr("disabled","true");
+		$(".savenow button").css("opacity","0.3");
 		var full_name = $(".sect-1").find("input[name='full_name']").val();
 		var username = $(".sect-1").find("input[name='username']").val();
 		var default_address = $(".sect-2").find("input[name='hd_address3']").val();
@@ -551,7 +553,7 @@ $(document).ready(function(){
 		var sub_district_id = $("select.hd_dist3").val();
 		var province_id = $("select.hd_prov3").val();
 		var city_id = $("select.hd_city3").val();
-
+		
 		if(province_id===null || city_id===null || sub_district_id===null || province_id==="" || city_id==="" || sub_district_id===""){
 
 			var param = {
@@ -582,8 +584,7 @@ $(document).ready(function(){
 	        	if(!data.is_error){
 			   		//alert("Your Profile has been updated.");
 			   		$("#success").modal("show");
-			   		$(".savenow button").attr("disabled","true");
-			   		$(".savenow button").css("opacity","0.3");
+			   		
 			   		location.reload();
 			   		//setTimeout('window.location.href = "thanks.html"; ',300);
 			   		//localStorage.products = "";
@@ -594,6 +595,8 @@ $(document).ready(function(){
 			   		localStorage.hd_payment="";*/
 			   	}else{
 			   		$("#error").modal("show");
+					$(".savenow button").attr("disabled",false);
+			   		$(".savenow button").css("opacity","1");
 			   	}
 		   	});   
 	      	return false;
@@ -607,6 +610,7 @@ $(document).ready(function(){
 			$(".eng img").css("filter","none");
 			$(".eng img").css("-webkit-filter","none");
 			$(".chgbhs strong").html("English");
+			localStorage.hd_lang="ENG"
 		}else{
 			$(".eng img").css("filter","grayscale(100%)");
 			$(".eng img").css("-webkit-filter","grayscale(100%)");
