@@ -593,6 +593,8 @@ $(document).ready(function() {
 	}
 
 	$(".btnfix .continue").click(function(){
+		$(this).css("opacity","0.3");
+	 	$(this).attr("disabled",true);
 		$(".loading").fadeIn("fast");
 		var payment_channel_id = $("select.hd_bank_to").val();
 		var order_id = $("select.hd_order").val();
@@ -616,7 +618,6 @@ $(document).ready(function() {
 	        		$(".loading").fadeOut("fast");
 	        		$("#success").modal("show");
 	        		setTimeout('window.location.href = "order.html?id='+ order_id +'"; ',300);
-
 	        	}else{
 	        		$("#error .modal-body p").html(respon.status_msg);
 	        		$("#error").modal("show");
@@ -640,8 +641,10 @@ $(document).ready(function() {
 	        		$(".loading").fadeOut("fast");
 	        		$("#success").modal("show");
 	        		setTimeout('window.location.href = "order.html?id='+ order_id +'"; ',800);
-
+					
 	        	}else{
+					$(".btnfix .continue").css("opacity","1");
+					$(".btnfix .continue").attr("disabled",false);
 	        		//setTimeout('window.location.href = "order.html?id='+ order_id +'"; ',800);
 	        		if(respon.status_code=="501" || respon.status_code==501){
 	        			if(localStorage.hd_lang=="IDN"){
@@ -668,12 +671,12 @@ $(document).ready(function() {
 				$("#error .modal-body p").html(respon.status_msg);
         		$("#error").modal("show");
         		$(".loading").fadeOut("fast");
+				$(".btnfix .continue").css("opacity","1");
+				$(".btnfix .continue").attr("disabled",false);
 			}
 		});
-
 		
 	})
-	
 	
 });
 </script>
