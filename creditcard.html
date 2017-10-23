@@ -494,8 +494,8 @@ $(document).ready(function() {
 			   		$(this).addClass("col-xs-12");
 					$(this).removeClass("col-xs-6");
 					$("#coupon_success .modal-footer .apply_coupon").remove();
-					
-
+					$(".usevoucher").attr("disabled",false);
+					$(".usevoucher").css("opacity","1");
 			   		$("#error").modal("show");
 			   		$("#coupon_success").modal("hide");
 			   		if(localStorage.hd_lang=="IDN"){
@@ -542,7 +542,8 @@ $(document).ready(function() {
 	function validatevoucher(){
 		var coupon_code = $(".vouchersec input").val();
 		//var order_id = order_id;
-
+		$(".usevoucher").attr("disabled","true");
+		$(".usevoucher").css("opacity","0.3");
 		var param = {
 			coupon_code : coupon_code,
 			order_id : order_id
@@ -576,6 +577,8 @@ $(document).ready(function() {
 		        		});
 		        		$(".apply_coupon").click(usevoucher);
 		        	}else{
+					$(".usevoucher").attr("disabled",false);
+					$(".usevoucher").css("opacity","1");					     	
 		        		$("#error").modal("show");
 		        		if(localStorage.hd_lang=="IDN"){
 		        			$("#error .modal-title").html("Kupon Salah");
@@ -588,6 +591,8 @@ $(document).ready(function() {
 		        	}
 		        })
 		}else{
+			$(".usevoucher").attr("disabled",false);
+			$(".usevoucher").css("opacity","1");						     
 			$("#error").modal("show");
     		if(localStorage.hd_lang=="IDN"){
     			$("#error .modal-title").html("Kupon Kosong");
@@ -807,7 +812,7 @@ $(document).ready(function() {
 	 });
 
 	 
-
+	
 	// OPEN CC FORM
 	function opencc(){
 	 	/* var url = "http://sprintasia.h2h.haagendazsindonesia.co.id/v1/create_va?session_key="+ sess_key +"&order_id="+ hd_current_order +"&payment_channel_id=3";
@@ -832,7 +837,12 @@ $(document).ready(function() {
 										   
 	}
 	
-	
+	$("#coupon_success .modal-footer .closebtn, .modal-backdrop").click(function(){
+		
+		$(".usevoucher").attr("disabled",false);
+		$(".usevoucher").css("opacity","1");
+		
+	})
 	
 	$("#sprintasia .modal-footer button").click(function(){
 		$("#sprintasia .modal-body iframe").attr("src","");
